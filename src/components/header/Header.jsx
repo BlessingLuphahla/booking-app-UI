@@ -13,10 +13,12 @@ import {
 import { useScreen } from "../../hooks/useScreen";
 
 function Header() {
+  const { isMobile } = useScreen();
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHamburgerOpen, setHamburgerIsOpen] = useState(false);
 
-  const mobileIconSize = "10px"
+  const mobileIconSize = isMobile ? "5px" : "220px";
 
   const headerItems = [
     [<Hotel />, "Stays"],
@@ -30,8 +32,6 @@ function Header() {
     setActiveIndex(index);
     isMobile && setHamburgerIsOpen(!isHamburgerOpen);
   };
-
-  const { isMobile } = useScreen();
 
   const handleHamburger = () => {
     setHamburgerIsOpen(!isHamburgerOpen);
@@ -98,7 +98,7 @@ function Header() {
         <button className="headerBtn">Sign In / Register</button>
         <div className="headerSearch">
           <div className="headerSearchItem">
-            <Hotel fontSize={isMobile && mobileIconSize} />
+            <Hotel style={{ fontSize: { mobileIconSize } }} />
             <input
               type="text"
               placeholder="Where are you going?"
@@ -106,11 +106,11 @@ function Header() {
             />
           </div>
           <div className="headerSearchItem">
-            <CalendarMonth fontSize={isMobile && mobileIconSize} />
+            <CalendarMonth style={{ fontSize: { mobileIconSize } }} />
             <span className="headerSearchText">date to date</span>
           </div>
           <div className="headerSearchItem">
-            <Person fontSize={isMobile && mobileIconSize} />
+            <Person style={{ fontSize: { mobileIconSize } }} />
             <span className="headerSearchText">2 adults two children</span>
           </div>
         </div>
