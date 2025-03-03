@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState } from "react";
 import "./header.css";
 import {
   CarRental,
@@ -9,38 +9,39 @@ import {
 } from "@mui/icons-material";
 
 function Header() {
-  useEffect(() => {
-    document.querySelectorAll(".HeaderListItem").forEach((element) =>
-      element.addEventListener("click", function () {
-        console.log("wassup");
-      })
-    );
-  }, []);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const headerItems = [
+    [<Hotel />, "Stays"],
+    [<AirplanemodeActive />, "Flight"],
+    [<CarRental />, "Car Rentals"],
+    [<BedOutlined />, "Attractions"],
+    [<AirlineSeatReclineExtra />, " Airport Taxis"],
+  ];
+
+  const handleActive = (index) => {
+    setActiveIndex(index);
+  };
 
   return (
     <div className="header">
       <div className="headerContainer">
         <div className="headerList">
-          <div className="HeaderListItem active">
-            <Hotel />
-            <span>Stays</span>
-          </div>
-          <div className="HeaderListItem">
-            <AirplanemodeActive />
-            <span>Flight</span>
-          </div>
-          <div className="HeaderListItem">
-            <CarRental />
-            <span>Car Rentals</span>
-          </div>
-          <div className="HeaderListItem">
-            <BedOutlined />
-            <span>Attractions</span>
-          </div>
-          <div className="HeaderListItem">
-            <AirlineSeatReclineExtra />
-            <span>Airport Taxis</span>
-          </div>
+          <div className="HeaderListItem active"></div>
+          {headerItems.map((element, index) => {
+            return (
+              <div
+                key={index}
+                className={`HeaderListItem ${
+                  activeIndex === index && "active"
+                }`}
+                onClick={() => handleActive(index)}
+              >
+                {element[0]}
+                <span>{element[1]}</span>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
