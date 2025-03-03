@@ -11,14 +11,16 @@ import {
   CalendarMonth,
 } from "@mui/icons-material";
 import { useScreen } from "../../hooks/useScreen";
+import DateRangePicker from "../dateRangePicker/DateRangePicker";
 
 function Header() {
   const { isMobile } = useScreen();
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHamburgerOpen, setHamburgerIsOpen] = useState(false);
+  const [isOpenDate, setIsOpenDate] = useState(false);
 
-  const mobileIconSize = isMobile ? "5px" : "220px";
+  const mobileIconSize = isMobile ? "5px" : "20px";
 
   const headerItems = [
     [<Hotel />, "Stays"],
@@ -91,6 +93,7 @@ function Header() {
           )}
         </div>
         <h1 className="headerTitle">A lifetime of savings? Yes Please!</h1>
+
         <p className="v">
           Get rewwarded for your travels - unlock instant savings of 10% or more
           with a free Redd Booking Account
@@ -105,7 +108,11 @@ function Header() {
               className="headerSearchInput"
             />
           </div>
-          <div className="headerSearchItem">
+
+          <div
+            className="headerSearchItem"
+            onClick={() => setIsOpenDate(!isOpenDate)}
+          >
             <CalendarMonth style={{ fontSize: { mobileIconSize } }} />
             <span className="headerSearchText">date to date</span>
           </div>
@@ -113,7 +120,15 @@ function Header() {
             <Person style={{ fontSize: { mobileIconSize } }} />
             <span className="headerSearchText">2 adults two children</span>
           </div>
+          {!isMobile && (
+            <div className="headerSearchItem">
+              <button style={{ width: "100px" }} className="headerBtn">
+                Search
+              </button>
+            </div>
+          )}
         </div>
+        {isOpenDate && <DateRangePicker />}
       </div>
     </div>
   );

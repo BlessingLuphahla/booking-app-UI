@@ -76,17 +76,23 @@
   height: 30px;
   justify-content: center;
   padding: 10px 20px;
-  gap: 20px;
+  gap: 35px;
   border-radius: 5px;
   color: black;
   background-color: white;
-  width: 60%;
+  width: 90%;
 }
 
 .headerSearchItem {
   padding: 10px 5px;
   display: flex;
   gap: 5px;
+  color: lightgray;
+  cursor: pointer;
+}
+
+.headerSearchText {
+  color: lightgray;
 }
 
 .headerSearchInput {
@@ -99,8 +105,9 @@
 }
 
 .headerSearchInput::-webkit-input-placeholder {
-  color: black;
+  color: lightgray;
 }
+
 
 @media (max-width: 599px) {
   .headerSearch {
@@ -108,10 +115,21 @@
     padding: 5px 10px;
     gap: 10px;
   }
+  
+  .headerSearchInput::-webkit-input-placeholder {
+    font-size: 10px;
+  }
+
+  .headerSearchText {
+    font-size: 7px;
+  }
 
   .headerSearchItem {
     padding: 5px 1px;
     font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .headerSearchInput {
