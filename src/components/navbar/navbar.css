@@ -1,0 +1,32 @@
+.navbar {
+  height: 50px;
+  background-color: var(--blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navContainer {
+  display: flex;
+  width: 90%;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 500;
+}
+
+.navItems {
+  display: flex;
+  gap: 10px;
+}
+
+.navButton {
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  color: var(--blue);
+  background-color: white;
+}
