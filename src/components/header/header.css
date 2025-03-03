@@ -1,0 +1,31 @@
+.header {
+  background-color: var(--blue);
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+.headerContainer {
+  align-items: center;
+  width: 90%;
+  margin: 20px 0px 70px 0px;
+}
+
+.headerList {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
+
+.HeaderListItem {
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.HeaderListItem.active {
+    color: red;
+}
+
+.HeaderListItem span {
+}

@@ -4,12 +4,13 @@ import Home from "./pages/home/Home";
 import List from "./pages/list/List";
 import Hotel from "./pages/hotel/Hotel";
 import Navbar from "./components/navbar/Navbar";
-import './App.css'
+import Header from "./components/header/Header";
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
+      <Header />
       <Routes>
         <Route path="/">
           <Route index={true} element={<Home />} />
