@@ -7,6 +7,7 @@ import {
   BedOutlined,
   AirplanemodeActive,
   Menu,
+  Person,
   CalendarMonth,
 } from "@mui/icons-material";
 import { useScreen } from "../../hooks/useScreen";
@@ -14,6 +15,8 @@ import { useScreen } from "../../hooks/useScreen";
 function Header() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHamburgerOpen, setHamburgerIsOpen] = useState(false);
+
+  const mobileIconSize = "10px"
 
   const headerItems = [
     [<Hotel />, "Stays"],
@@ -95,7 +98,7 @@ function Header() {
         <button className="headerBtn">Sign In / Register</button>
         <div className="headerSearch">
           <div className="headerSearchItem">
-            <Hotel />
+            <Hotel fontSize={isMobile && mobileIconSize} />
             <input
               type="text"
               placeholder="Where are you going?"
@@ -103,11 +106,11 @@ function Header() {
             />
           </div>
           <div className="headerSearchItem">
-            <CalendarMonth />
+            <CalendarMonth fontSize={isMobile && mobileIconSize} />
             <span className="headerSearchText">date to date</span>
           </div>
           <div className="headerSearchItem">
-            <Hotel />
+            <Person fontSize={isMobile && mobileIconSize} />
             <span className="headerSearchText">2 adults two children</span>
           </div>
         </div>
