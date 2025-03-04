@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./header.css";
 import {
   CarRental,
@@ -22,6 +22,9 @@ function Header() {
 
   const mobileIconSize = isMobile ? "5px" : "20px";
 
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+
   const headerItems = [
     [<Hotel />, "Stays"],
     [<AirplanemodeActive />, "Flight"],
@@ -38,6 +41,12 @@ function Header() {
   const handleHamburger = () => {
     setHamburgerIsOpen(!isHamburgerOpen);
   };
+
+  useEffect(() => {
+    if (startDate && endDate) {
+      setIsOpenDate(false);
+    }
+  }, [endDate, startDate]);
 
   return (
     <div className="header">
@@ -114,7 +123,13 @@ function Header() {
             onClick={() => setIsOpenDate(!isOpenDate)}
           >
             <CalendarMonth style={{ fontSize: { mobileIconSize } }} />
-            <span className="headerSearchText">date to date</span>
+            <div className="headerSearchText">
+              <div className="dateOutput">
+                <div> {startDate ? startDate : "date"}</div>
+                <span>to</span>
+                {endDate ? endDate : "date"}
+              </div>
+            </div>
           </div>
           <div className="headerSearchItem">
             <Person style={{ fontSize: { mobileIconSize } }} />
@@ -128,7 +143,14 @@ function Header() {
             </div>
           )}
         </div>
-        {isOpenDate && <DateRangePicker />}
+        {isOpenDate && (
+          <DateRangePicker
+            setEndDate={setEndDate}
+            setStartDate={setStartDate}
+            startDate={startDate}
+            endDate={endDate}
+          />
+        )}
       </div>
     </div>
   );

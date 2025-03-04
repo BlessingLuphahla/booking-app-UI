@@ -1,9 +1,11 @@
 .dateLabel {
   color: white !important;
+  font-size: 12px !important;
 }
 
 .dateRangePicker input {
   color: white !important;
+  font-size: 12px !important;
 }
 
 .date {

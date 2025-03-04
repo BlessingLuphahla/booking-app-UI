@@ -1,11 +1,7 @@
-import React, { useState } from "react";
 import { TextField } from "@mui/material";
 import "./dateRangePicker.css";
 
-function DateRangePicker() {
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
-
+function DateRangePicker({ endDate, setEndDate, setStartDate, startDate }) {
   return (
     <div className="dateRangePicker">
       <TextField
@@ -18,6 +14,11 @@ function DateRangePicker() {
           shrink: true,
           className: "dateLabel",
         }}
+        InputProps={{
+          style: {
+            color: "white",
+          },
+        }}
       />
       <TextField
         label="End Date"
@@ -28,6 +29,11 @@ function DateRangePicker() {
         InputLabelProps={{
           shrink: true,
           className: "dateLabel",
+        }}
+        InputProps={{
+          style: {
+            color: "white",
+          },
         }}
       />
     </div>

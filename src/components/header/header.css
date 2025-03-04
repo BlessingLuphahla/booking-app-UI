@@ -87,12 +87,12 @@
   padding: 10px 5px;
   display: flex;
   gap: 5px;
-  color: lightgray;
+  color: black;
   cursor: pointer;
 }
 
 .headerSearchText {
-  color: lightgray;
+  color: black;
 }
 
 .headerSearchInput {
@@ -105,17 +105,31 @@
 }
 
 .headerSearchInput::-webkit-input-placeholder {
-  color: lightgray;
+  color: black;
 }
 
+.dateOutput {
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
 
 @media (max-width: 599px) {
+  .dateOutput {
+    font-size: 7px;
+    gap: 2px;
+    text-wrap: nowrap;
+  }
+
   .headerSearch {
-    height: 20px;
-    padding: 5px 10px;
+    height: 50px;
+    padding: 5px 20px;
     gap: 10px;
   }
-  
+
   .headerSearchInput::-webkit-input-placeholder {
     font-size: 10px;
   }
