@@ -1,7 +1,13 @@
 import { TextField } from "@mui/material";
 import "./dateRangePicker.css";
 
-function DateRangePicker({ endDate, setEndDate, setStartDate, startDate }) {
+function DateRangePicker({
+  setIsOpenDate,
+  endDate,
+  setEndDate,
+  setStartDate,
+  startDate,
+}) {
   const formatedDate = (date, type) => {
     var newDate = new Date(date);
 
@@ -21,6 +27,9 @@ function DateRangePicker({ endDate, setEndDate, setStartDate, startDate }) {
 
   return (
     <div className="dateRangePicker">
+      <div className="close" onClick={() => setIsOpenDate(false)}>
+        ×
+      </div>
       <TextField
         label="Start Date"
         type="date"

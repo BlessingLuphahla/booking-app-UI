@@ -11,3 +11,15 @@
 .date {
   color: white !important;
 }
+
+.dateRangePicker {
+  padding: 40px 15px;
+  background-color: var(--light-blue);
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  font-size: 20px;
+  cursor: pointer;
+}

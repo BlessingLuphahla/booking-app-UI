@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Children, useEffect, useState } from "react";
 import "./header.css";
 import {
   CarRental,
@@ -12,6 +12,7 @@ import {
 } from "@mui/icons-material";
 import { useScreen } from "../../hooks/useScreen";
 import DateRangePicker from "../dateRangePicker/DateRangePicker";
+import Options from "../options/Options";
 
 function Header() {
   const { isMobile } = useScreen();
@@ -19,6 +20,13 @@ function Header() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHamburgerOpen, setHamburgerIsOpen] = useState(false);
   const [isOpenDate, setIsOpenDate] = useState(false);
+  const [isOpenOptions, setIsOpenOptions] = useState(false);
+
+  const [options, setOptions] = useState({
+    adults: null,
+    Children: null,
+    room: null,
+  });
 
   const mobileIconSize = isMobile ? "5px" : "20px";
 
@@ -131,9 +139,14 @@ function Header() {
               </div>
             </div>
           </div>
-          <div className="headerSearchItem">
+          <div
+            className="headerSearchItem"
+            onClick={() => setIsOpenOptions(!isOpenOptions)}
+          >
             <Person style={{ fontSize: { mobileIconSize } }} />
-            <span className="headerSearchText">2 adults two children</span>
+            <span className="headerSearchText">
+              {options.adults || 0} adults {options.Children || 0} children
+            </span>
           </div>
           {!isMobile && (
             <div className="headerSearchItem">
@@ -149,6 +162,15 @@ function Header() {
             setStartDate={setStartDate}
             startDate={startDate}
             endDate={endDate}
+            setIsOpenDate={setIsOpenDate}
+          />
+        )}
+
+        {isOpenOptions && (
+          <Options
+            setIsOpenOptions={setIsOpenOptions}
+            options={options}
+            setOptions={setOptions}
           />
         )}
       </div>
