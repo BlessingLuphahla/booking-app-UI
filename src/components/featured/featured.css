@@ -11,6 +11,10 @@
   color: white;
   border-radius: 10px;
   overflow: hidden;
+  height: 420px;
+  max-height: 420px;
+  background-color: green;
+  padding: 5px;
 }
 
 .featuredTitles {
