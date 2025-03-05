@@ -13,7 +13,6 @@
   overflow: hidden;
   height: 450px;
   max-height: 420px;
-  background-color: green;
   width: 350px;
 }
 
@@ -25,8 +24,9 @@
   font-size: 20px;
   color: white;
   z-index: 10;
-  top: 5px;
-  left: 5px;
+  bottom: 5px;
+  left: 20%;
+  flex-direction: column;
 }
 
 .featuredTitles h1 {
@@ -41,4 +41,33 @@
   max-width: 350px;
   height: 100%;
   object-fit: cover;
+}
+
+@media (max-width: 700px) {
+  .featured {
+    gap: 10px;
+  }
+
+  .featuredItem {
+    border-radius: 3px;
+    height: 150px;
+    max-height: 200px;
+    width: 100px;
+  }
+
+  .featuredTitles {
+    gap: 5px;
+    font-size: 10px;
+  }
+
+  .featuredTitles h1 {
+    font-size: 12px;
+  }
+  .featuredTitles h2 {
+    font-size: 10px;
+  }
+
+  .featuredImg {
+    max-width: 100px;
+  }
 }

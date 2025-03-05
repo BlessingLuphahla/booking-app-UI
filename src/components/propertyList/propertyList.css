@@ -55,3 +55,41 @@
   background-color: lightblue;
   cursor: pointer;
 }
+
+@media (max-width: 700px) {
+  .propertyList {
+    gap: 10px;
+  }
+
+  .propertyListItem {
+    border-radius: 3px;
+    height: 210px;
+    max-height: 210px;
+    width: 210px;
+  }
+
+  .propertyListTitles {
+    gap: 2px;
+    font-size: 12px;
+    top: 2px;
+    left: 2px;
+  }
+
+  .propertyListTitles h1 {
+    margin-top: 5px;
+    font-size: 13px;
+  }
+  .propertyListTitles h2 {
+    font-size: 12px;
+  }
+
+  .propertyListImg {
+    max-width: 80%;
+    height: 80%;
+    object-fit: cover;
+  }
+
+  .symbol {
+    padding: 6px;
+  }
+}

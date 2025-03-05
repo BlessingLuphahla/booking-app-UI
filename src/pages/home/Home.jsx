@@ -3,6 +3,7 @@ import "./home.css";
 import Featured from "../../components/featured/Featured";
 import PropertyList from "../../components/propertyList/PropertyList";
 import FeaturedProperties from "../../components/featuredProperties/FeaturedProperties";
+import MailList from "../../components/mailList/MailList";
 
 function Home() {
   return (
@@ -13,6 +14,7 @@ function Home() {
       <Featured />
       <h2 className="homeTitle">Homes Guests Love</h2>
       <FeaturedProperties />
+      <MailList/>
     </div>
   );
 }

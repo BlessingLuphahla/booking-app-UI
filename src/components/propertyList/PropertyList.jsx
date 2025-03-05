@@ -2,10 +2,13 @@ import "./propertyList.css";
 import { propertyList } from "../../data/propertyList";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+import { useScreen } from "../../hooks/useScreen";
 
 function PropertyList() {
+  const { isMobile } = useScreen();
+
   const [lowerLimit, setLowerLimit] = useState(0);
-  const [upperLimit, setUpperLimit] = useState(3);
+  const [upperLimit, setUpperLimit] = useState(isMobile ? 2 : 3);
 
   useEffect(() => {
     if (upperLimit > propertyList.length) {

@@ -55,7 +55,6 @@
 
 .fpImg {
   width: 100%;
-  max-width: 350px;
   height: 80%;
   object-fit: cover;
 }
@@ -67,4 +66,32 @@
   padding: 12px;
   background-color: lightblue;
   cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .fpItem {
+    height: 150px;
+    width: 80px;
+  }
+
+  .symbol {
+    border: 1px solid black;
+    padding: 1px;
+  }
+
+  .fpName {
+    font-size: 13px;
+  }
+
+  .fpCity {
+    font-size: 10px;
+  }
+
+  .fpRating {
+    gap: 6px;
+  }
+
+  .fpRating > button {
+    padding: 1px 3px;
+  }
 }
