@@ -1,0 +1,64 @@
+.mail {
+  margin: 30px 0px;
+  padding: 35px 0px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  background-color: var(--blue);
+  gap: 20px;
+}
+
+.mailInputContainer > input,
+.mailInputContainer > button {
+  border: none;
+  outline: none;
+  margin: 10px;
+  margin-bottom: 0px;
+}
+.mailInputContainer > input {
+  border-radius: 2px;
+  padding: 10px;
+  width: 300px;
+  height: 30px;
+}
+
+.mailInputContainer > button {
+  border-radius: 5px;
+  padding: 2px 10px;
+  height: 40px;
+  background-color: var(--light-blue);
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .mail {
+    margin: 20px 0px;
+    padding: 25px 0px;
+    gap: 15px;
+  }
+
+  .mailInputContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .mailInputContainer > input,
+  .mailInputContainer > button {
+    margin: 5px;
+    margin-bottom: 0px;
+  }
+  .mailInputContainer > input {
+    padding: 10px;
+    width: 250px;
+    height: 25px;
+  }
+
+  .mailInputContainer > button {
+    border-radius: 5px;
+    height: 40px;
+  }
+}

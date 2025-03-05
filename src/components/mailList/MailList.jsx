@@ -7,6 +7,12 @@ function MailList() {
       <span className="mailDesc">
         Sign Up and we will send the best details to you
       </span>
+
+      <div className="mailInputContainer">
+        <input type="text" placeholder="Your Email" />
+        <button>Subscribe</button>
+      </div>
+
     </div>
   );
 }
