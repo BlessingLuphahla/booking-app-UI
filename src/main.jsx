@@ -5,9 +5,9 @@ import App from "./App.jsx";
 import { ScreenProvider } from "./hooks/useScreen.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <ScreenProvider>
-    <StrictMode>
+  <StrictMode>
+    <ScreenProvider>
       <App />
-    </StrictMode>
-  </ScreenProvider>
+    </ScreenProvider>
+  </StrictMode>
 );

@@ -13,6 +13,7 @@ import {
 import { useScreen } from "../../hooks/useScreen";
 import DateRangePicker from "../dateRangePicker/DateRangePicker";
 import Options from "../options/Options";
+import { useLocation } from "react-router-dom";
 
 function Header() {
   const { isMobile } = useScreen();
@@ -40,6 +41,8 @@ function Header() {
     [<BedOutlined />, "Attractions"],
     [<AirlineSeatReclineExtra />, " Airport Taxis"],
   ];
+
+  const location = useLocation();
 
   const handleActive = (index) => {
     setActiveIndex(index);
@@ -116,47 +119,49 @@ function Header() {
           with a free Redd Booking Account
         </p>
         <button className="headerBtn">Sign In / Register</button>
-        <div className="headerSearch">
-          <div className="headerSearchItem">
-            <Hotel style={{ fontSize: { mobileIconSize } }} />
-            <input
-              type="text"
-              placeholder="Where are you going?"
-              className="headerSearchInput"
-            />
-          </div>
+        {location.pathname === "/" && (
+          <div className="headerSearch">
+            <div className="headerSearchItem">
+              <Hotel style={{ fontSize: { mobileIconSize } }} />
+              <input
+                type="text"
+                placeholder="Where are you going?"
+                className="headerSearchInput"
+              />
+            </div>
 
-          <div
-            className="headerSearchItem"
-            onClick={() => setIsOpenDate(!isOpenDate)}
-          >
-            <CalendarMonth style={{ fontSize: { mobileIconSize } }} />
-            <div className="headerSearchText">
-              <div className="dateOutput">
-                <div> {startDate ? startDate : "date"}</div>
-                <span>to</span>
-                {endDate ? endDate : "date"}
+            <div
+              className="headerSearchItem"
+              onClick={() => setIsOpenDate(!isOpenDate)}
+            >
+              <CalendarMonth style={{ fontSize: { mobileIconSize } }} />
+              <div className="headerSearchText">
+                <div className="dateOutput">
+                  <div> {startDate ? startDate : "date"}</div>
+                  <span>to</span>
+                  {endDate ? endDate : "date"}
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            className="headerSearchItem"
-            onClick={() => setIsOpenOptions(!isOpenOptions)}
-          >
-            <Person style={{ fontSize: { mobileIconSize } }} />
-            <span className="headerSearchText">
-              {options.adults || 0} adults {options.children || 0} children{" "}
-              {options.room || 0} room
-            </span>
-          </div>
-          {!isMobile && (
-            <div className="headerSearchItem">
-              <button style={{ width: "100px" }} className="headerBtn">
-                Search
-              </button>
+            <div
+              className="headerSearchItem"
+              onClick={() => setIsOpenOptions(!isOpenOptions)}
+            >
+              <Person style={{ fontSize: { mobileIconSize } }} />
+              <span className="headerSearchText">
+                {options.adults || 0} adults {options.children || 0} children{" "}
+                {options.room || 0} room
+              </span>
             </div>
-          )}
-        </div>
+            {!isMobile && (
+              <div className="headerSearchItem">
+                <button style={{ width: "100px" }} className="headerBtn">
+                  Search
+                </button>
+              </div>
+            )}
+          </div>
+        )}
         {isOpenDate && (
           <DateRangePicker
             setEndDate={setEndDate}
