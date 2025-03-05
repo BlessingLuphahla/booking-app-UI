@@ -2,6 +2,7 @@ import React from "react";
 import "./home.css";
 import Featured from "../../components/featured/Featured";
 import PropertyList from "../../components/propertyList/PropertyList";
+import FeaturedProperties from "../../components/featuredProperties/FeaturedProperties";
 
 function Home() {
   return (
@@ -10,6 +11,8 @@ function Home() {
       <PropertyList />
       <h1 className="homeTitle">Browser by Featured</h1>
       <Featured />
+      <h2 className="homeTitle">Homes Guests Love</h2>
+      <FeaturedProperties />
     </div>
   );
 }

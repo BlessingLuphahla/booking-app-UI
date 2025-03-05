@@ -1,10 +1,11 @@
 import "./propertyList.css";
 import { propertyList } from "../../data/propertyList";
 import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 
 function PropertyList() {
   const [lowerLimit, setLowerLimit] = useState(0);
-  const [upperLimit, setUpperLimit] = useState(4);
+  const [upperLimit, setUpperLimit] = useState(3);
 
   useEffect(() => {
     if (upperLimit > propertyList.length) {
@@ -32,27 +33,19 @@ function PropertyList() {
 
   return (
     <div className="propertyList">
-      <div className="symbol" onClick={handlePrev}>
-        &lt;
-      </div>
-      {propertyList.slice(lowerLimit, upperLimit).map((element, index) => {
+      <ChevronLeft className="symbol" onClick={handlePrev} />
+      {propertyList.slice(lowerLimit, upperLimit + 1).map((element, index) => {
         return (
           <div key={index} className="propertyListItem">
             <img className="propertyListImg" src={element.src} alt="" />
             <div className="propertyListTitles">
-              <h1>
-                {element.title1}
-              </h1>
-              <h2>
-                {element.title2}
-              </h2>
+              <h1>{element.title1}</h1>
+              <h2>{element.title2}</h2>
             </div>
           </div>
         );
       })}
-      <div className="symbol" onClick={handleNext}>
-        &gt;
-      </div>
+      <ChevronRight className="symbol" onClick={handleNext} />
     </div>
   );
 }
