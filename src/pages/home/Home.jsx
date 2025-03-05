@@ -1,10 +1,15 @@
-import React from 'react'
-import './home.css'
+import React from "react";
+import "./home.css";
+import Featured from "../../components/featured/Featured";
 
 function Home() {
   return (
-    <div>Hunny I am Home</div>
-  )
+      <div className="homeContainer">
+        <Featured />
+        <Featured />
+        <Featured />
+      </div>
+  );
 }
 
-export default Home
+export default Home;
