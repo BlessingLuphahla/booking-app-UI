@@ -112,72 +112,74 @@ function Header() {
             </>
           )}
         </div>
-        <h1 className="headerTitle">A lifetime of savings? Yes Please!</h1>
-
-        <p className="v">
-          Get rewwarded for your travels - unlock instant savings of 10% or more
-          with a free Redd Booking Account
-        </p>
-        <button className="headerBtn">Sign In / Register</button>
         {location.pathname === "/" && (
-          <div className="headerSearch">
-            <div className="headerSearchItem">
-              <Hotel style={{ fontSize: { mobileIconSize } }} />
-              <input
-                type="text"
-                placeholder="Where are you going?"
-                className="headerSearchInput"
-              />
-            </div>
+          <>
+            <h1 className="headerTitle">A lifetime of savings? Yes Please!</h1>
 
-            <div
-              className="headerSearchItem"
-              onClick={() => setIsOpenDate(!isOpenDate)}
-            >
-              <CalendarMonth style={{ fontSize: { mobileIconSize } }} />
-              <div className="headerSearchText">
-                <div className="dateOutput">
-                  <div> {startDate ? startDate : "date"}</div>
-                  <span>to</span>
-                  {endDate ? endDate : "date"}
+            <p className="v">
+              Get rewwarded for your travels - unlock instant savings of 10% or
+              more with a free Redd Booking Account
+            </p>
+            <button className="headerBtn">Sign In / Register</button>
+            <div className="headerSearch">
+              <div className="headerSearchItem">
+                <Hotel style={{ fontSize: { mobileIconSize } }} />
+                <input
+                  type="text"
+                  placeholder="Where are you going?"
+                  className="headerSearchInput"
+                />
+              </div>
+
+              <div
+                className="headerSearchItem"
+                onClick={() => setIsOpenDate(!isOpenDate)}
+              >
+                <CalendarMonth style={{ fontSize: { mobileIconSize } }} />
+                <div className="headerSearchText">
+                  <div className="dateOutput">
+                    <div> {startDate ? startDate : "date"}</div>
+                    <span>to</span>
+                    {endDate ? endDate : "date"}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              className="headerSearchItem"
-              onClick={() => setIsOpenOptions(!isOpenOptions)}
-            >
-              <Person style={{ fontSize: { mobileIconSize } }} />
-              <span className="headerSearchText">
-                {options.adults || 0} adults {options.children || 0} children{" "}
-                {options.room || 0} room
-              </span>
-            </div>
-            {!isMobile && (
-              <div className="headerSearchItem">
-                <button style={{ width: "100px" }} className="headerBtn">
-                  Search
-                </button>
+              <div
+                className="headerSearchItem"
+                onClick={() => setIsOpenOptions(!isOpenOptions)}
+              >
+                <Person style={{ fontSize: { mobileIconSize } }} />
+                <span className="headerSearchText">
+                  {options.adults || 0} adults {options.children || 0} children{" "}
+                  {options.room || 0} room
+                </span>
               </div>
+              {!isMobile && (
+                <div className="headerSearchItem">
+                  <button style={{ width: "100px" }} className="headerBtn">
+                    Search
+                  </button>
+                </div>
+              )}
+            </div>
+            {isOpenDate && (
+              <DateRangePicker
+                setEndDate={setEndDate}
+                setStartDate={setStartDate}
+                startDate={startDate}
+                endDate={endDate}
+                setIsOpenDate={setIsOpenDate}
+              />
             )}
-          </div>
-        )}
-        {isOpenDate && (
-          <DateRangePicker
-            setEndDate={setEndDate}
-            setStartDate={setStartDate}
-            startDate={startDate}
-            endDate={endDate}
-            setIsOpenDate={setIsOpenDate}
-          />
-        )}
 
-        {isOpenOptions && (
-          <Options
-            setIsOpenOptions={setIsOpenOptions}
-            options={options}
-            setOptions={setOptions}
-          />
+            {isOpenOptions && (
+              <Options
+                setIsOpenOptions={setIsOpenOptions}
+                options={options}
+                setOptions={setOptions}
+              />
+            )}
+          </>
         )}
       </div>
     </div>
