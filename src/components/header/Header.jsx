@@ -24,7 +24,7 @@ function Header() {
 
   const [options, setOptions] = useState({
     adults: null,
-    Children: null,
+    children: null,
     room: null,
   });
 
@@ -145,7 +145,8 @@ function Header() {
           >
             <Person style={{ fontSize: { mobileIconSize } }} />
             <span className="headerSearchText">
-              {options.adults || 0} adults {options.Children || 0} children
+              {options.adults || 0} adults {options.children || 0} children{" "}
+              {options.room || 0} room
             </span>
           </div>
           {!isMobile && (

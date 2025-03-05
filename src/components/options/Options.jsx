@@ -10,7 +10,7 @@ function Options({ options, setOptions, setIsOpenOptions }) {
   useEffect(() => {
     setOptions({
       adults: adults,
-      Children: children,
+      children: children,
       room: room,
     });
   }, [adults, children, room, setOptions]);

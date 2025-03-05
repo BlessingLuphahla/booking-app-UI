@@ -8,10 +8,6 @@
   font-size: 12px !important;
 }
 
-.date {
-  color: white !important;
-}
-
 .dateRangePicker {
   padding: 40px 15px;
   background-color: var(--light-blue);
