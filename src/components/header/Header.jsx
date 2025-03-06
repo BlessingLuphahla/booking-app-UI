@@ -13,11 +13,13 @@ import {
 import { useScreen } from "../../hooks/useScreen";
 import DateRangePicker from "../dateRangePicker/DateRangePicker";
 import Options from "../options/Options";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Header() {
   const { isMobile } = useScreen();
+  const navigate = useNavigate();
 
+  const [destination, setDestination] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHamburgerOpen, setHamburgerIsOpen] = useState(false);
   const [isOpenDate, setIsOpenDate] = useState(false);
@@ -58,6 +60,17 @@ function Header() {
       setIsOpenDate(false);
     }
   }, [endDate, startDate]);
+
+  const handleSearch = () => {
+    navigate("/hotels", {
+      state: {
+        destination,
+        options,
+        startDate,
+        endDate,
+      },
+    });
+  };
 
   return (
     <div className="header">
@@ -117,7 +130,7 @@ function Header() {
             <h1 className="headerTitle">A lifetime of savings? Yes Please!</h1>
 
             <p className="v">
-              Get rewwarded for your travels - unlock instant savings of 10% or
+              Get rewarded for your travels - unlock instant savings of 10% or
               more with a free Redd Booking Account
             </p>
             <button className="headerBtn">Sign In / Register</button>
@@ -128,6 +141,7 @@ function Header() {
                   type="text"
                   placeholder="Where are you going?"
                   className="headerSearchInput"
+                  onChange={(e) => setDestination(e.target.value)}
                 />
               </div>
 
@@ -151,16 +165,18 @@ function Header() {
                 <Person style={{ fontSize: { mobileIconSize } }} />
                 <span className="headerSearchText">
                   {options.adults || 0} adults {options.children || 0} children{" "}
-                  {options.room || 0} room
+                  {options.room || 0}
                 </span>
               </div>
-              {!isMobile && (
-                <div className="headerSearchItem">
-                  <button style={{ width: "100px" }} className="headerBtn">
-                    Search
-                  </button>
-                </div>
-              )}
+              <div className="headerSearchItem">
+                <button
+                  onClick={handleSearch}
+                  style={{ width: "100px" }}
+                  className="headerBtn searchBtn"
+                >
+                  Search
+                </button>
+              </div>
             </div>
             {isOpenDate && (
               <DateRangePicker

@@ -1,0 +1,91 @@
+.list {
+  color: white;
+  text-align: center;
+}
+
+.listContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.listWrapper {
+  width: 100%;
+  max-width: 1024px;
+  display: flex;
+}
+
+.listSearch {
+  flex: 1;
+  background-color: var(--light-blue);
+  padding: 25px;
+  border-radius: 10px;
+  position: sticky;
+}
+
+.listSearchTitle {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.listResult {
+  flex: 3;
+}
+
+.listSearchItem {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 10px 0px;
+}
+
+.listSearchItem > label {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.listSearchItem > input {
+  height: 25px;
+  border: none;
+  outline: none;
+  padding: 5px;
+}
+
+.listSearchItem > .listSearchItemDate {
+  height: 15px;
+  padding: 16px;
+  background-color: white;
+  text-align: center;
+  font-size: 15px;
+}
+
+.listSearchItem > span {
+  height: 30px;
+  padding: 5px;
+  background-color: white;
+  text-align: center;
+  color: black;
+}
+
+.listSearchItemOption {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.listSearchItemOptionInput {
+  height: 15px;
+  border: none;
+  outline: none;
+  padding: 5px;
+  width: 50px;
+}
+
+.listSearchItemOptionText {
+  text-wrap: nowrap;
+  font-size: 16px;
+  font-weight: 400;
+  width: 100%;
+  text-align: start;
+}

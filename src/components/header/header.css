@@ -25,6 +25,7 @@
   color: white;
   gap: 10px;
   display: flex;
+  cursor: pointer;
 }
 
 .headerListItem.active {
@@ -132,6 +133,12 @@
 
   .headerSearchInput::-webkit-input-placeholder {
     font-size: 10px;
+  }
+
+  .searchBtn {
+    width: 45px !important;
+    font-size: 10px;
+    height: 30px;
   }
 
   .headerSearchText {
