@@ -1,16 +1,27 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./list.css";
 import { useLocation } from "react-router-dom";
+import SearchItem from "../../components/searchItem/SearchItem";
 
 function List() {
   const location = useLocation();
   const { state } = location;
+
+  const topSearchRef = useRef();
 
   const [data, setData] = useState(state);
 
   useEffect(() => {
     setData(state);
   }, [state]);
+
+  const handleSearch = () => {
+    topSearchRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+    console.log(topSearchRef);
+  };
 
   const destination = data?.destination;
   const options = data?.options;
@@ -81,9 +92,24 @@ function List() {
                 />
               </div>
             </div>
-            <button>Search</button>
+            <button onClick={handleSearch}>Search</button>
           </div>
-          <div className="listResult">assaasasasasasa</div>
+          <div className="listResult" ref={topSearchRef}>
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+          </div>
         </div>
       </div>
     </div>
