@@ -1,6 +1,6 @@
 .list {
   color: white;
-  text-align: center;
+  text-align: start;
 }
 
 .listContainer {
@@ -11,12 +11,12 @@
 
 .listWrapper {
   width: 100%;
-  max-width: 1024px;
+  max-width: 1224px;
   display: flex;
 }
 
 .listSearch {
-  flex: 1;
+  flex: 1.2;
   background-color: var(--light-blue);
   padding: 25px;
   border-radius: 10px;
@@ -29,6 +29,7 @@
 }
 
 .listResult {
+  color: black;
   flex: 3;
 }
 
@@ -37,6 +38,7 @@
   flex-direction: column;
   gap: 15px;
   margin: 10px 0px;
+  padding: 10px;
 }
 
 .listSearchItem > label {
@@ -88,4 +90,23 @@
   font-weight: 400;
   width: 100%;
   text-align: start;
+}
+
+.listSearch > button {
+  background-color: red;
+  padding: 12px;
+  border: none;
+  background-color: var(--blue);
+  color: white;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 200;
+}
+
+@media (max-width: 599px) {
+  .listWrapper {
+    max-width: 95%;
+    flex-direction: column;
+  }
 }

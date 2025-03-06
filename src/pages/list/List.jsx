@@ -30,8 +30,8 @@ function List() {
               <label htmlFor="">Check In Date:</label>
               <span className="listSearchItemDate">{date}</span>
             </div>
+            <label htmlFor="">Options:</label>
             <div className="listSearchItem">
-              <label htmlFor="">Options:</label>
               <div className="listSearchItemOption">
                 <span className="listSearchItemOptionText">
                   Min Price <small>(per night)</small>
@@ -81,8 +81,9 @@ function List() {
                 />
               </div>
             </div>
+            <button>Search</button>
           </div>
-          <div className="listResult"></div>
+          <div className="listResult">assaasasasasasa</div>
         </div>
       </div>
     </div>
