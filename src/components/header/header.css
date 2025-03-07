@@ -22,8 +22,8 @@
 }
 
 .headerListItem {
-  color: white;
   gap: 10px;
+  color: white;
   display: flex;
   cursor: pointer;
 }

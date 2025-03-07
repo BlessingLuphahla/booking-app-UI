@@ -30,7 +30,8 @@ function SearchItem() {
         </div>
         <div className="searchItemText">
           <span className="searchItemPrice">$123</span>
-          <span className="searchItemPrice"></span>
+          <span className="searchItemPrice">includes taxes and fees</span>
+          <button className="searchItemCheckButton">See Availaibility</button>
         </div>
       </div>
     </div>
