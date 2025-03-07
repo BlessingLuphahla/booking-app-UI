@@ -1,0 +1,12 @@
+.centerComponent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 599px) {
+  .centerComponent {
+    padding: 5px;
+  }
+}

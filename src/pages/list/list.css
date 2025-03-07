@@ -98,7 +98,6 @@
 }
 
 .listSearch > button {
-  background-color: red;
   padding: 12px;
   border: none;
   background-color: var(--blue);
@@ -107,6 +106,7 @@
   width: 100%;
   font-size: 18px;
   font-weight: 200;
+  cursor: pointer;
 }
 
 @media (max-width: 599px) {
@@ -118,5 +118,48 @@
     padding: 18px;
     border-radius: 6px;
     position: relative;
+  }
+
+  .listSearchItem {
+    gap: 10px;
+    margin: 8px 0px;
+    padding: 8px;
+  }
+
+  .listSearchItem > label {
+    font-size: 14px;
+  }
+
+  .listSearchItem > input {
+    height: 20px;
+  }
+
+  .listSearchItem > .listSearchItemDate {
+    height: 12px;
+    padding: 13px;
+    font-size: 14px;
+  }
+
+  .listSearchItem > span {
+    height: 25px;
+  }
+
+  .listSearchItemOption {
+    gap: 16px;
+  }
+
+  .listSearchItemOptionInput {
+    height: 13px;
+    padding: 5px;
+    width: 40px;
+  }
+
+  .listSearchItemOptionText {
+    font-size: 14px;
+  }
+
+  .listSearch > button {
+    padding: 10px;
+    font-size: 16px;
   }
 }

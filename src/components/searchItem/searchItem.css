@@ -76,6 +76,33 @@
   cursor: pointer;
 }
 
+.searchItemText {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.searchItemDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.searchItemRating {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.searchItemRating > span {
+  font-weight: 500;
+}
+.searchItemRating > button {
+  background-color: var(--blue);
+  color: white;
+  border: none;
+  padding: 5px;
+}
 @media (max-width: 599px) {
   .searchItem {
     padding: 10px;

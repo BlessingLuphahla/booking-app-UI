@@ -20,7 +20,6 @@ function List() {
       behavior: "smooth",
       block: "start",
     });
-    console.log(topSearchRef);
   };
 
   const destination = data?.destination;

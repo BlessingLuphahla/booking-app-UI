@@ -5,6 +5,9 @@ import List from "./pages/list/List";
 import Hotel from "./pages/hotel/Hotel";
 import Navbar from "./components/navbar/Navbar";
 import Header from "./components/header/Header";
+import MailList from "./components/mailList/MailList";
+import Footer from "./components/footer/Footer";
+import CenterComponent from "./components/centerComponent/CenterComponent";
 
 function App() {
   return (
@@ -20,6 +23,10 @@ function App() {
           </Route>
         </Route>
       </Routes>
+      <CenterComponent>
+        <MailList />
+        <Footer />
+      </CenterComponent>
     </BrowserRouter>
   );
 }
