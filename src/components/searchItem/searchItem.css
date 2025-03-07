@@ -51,13 +51,19 @@
 .searchItemFeatures {
   font-size: 12px;
   font-weight: 800;
-  color: green;
+  color: var(--green);
 }
 
 .CancelOp {
   font-size: 12px;
-  font-weight: 500;
-  color: green;
+  font-weight: 600;
+  color: var(--green);
+}
+
+.CancelOpSubtitle {
+  font-size: 13px;
+  font-weight: 100;
+  color: var(--green);
 }
 
 @media (max-width: 599px) {

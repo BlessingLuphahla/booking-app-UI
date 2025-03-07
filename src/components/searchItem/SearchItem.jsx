@@ -20,12 +20,18 @@ function SearchItem() {
         </span>
         <span className="CancelOp">Free Cancellation</span>
         <span className="CancelOpSubtitle">
-          You can cancel later, so look in this great price today!
+          You can cancel later, so look in this great price today
         </span>
       </div>
       <div className="searchItemDetails">
-        <h1>details</h1>
-        <h1>details</h1>
+        <div className="searchItemRating">
+          <span>Excellent</span>
+          <button>8.9</button>
+        </div>
+        <div className="searchItemText">
+          <span className="searchItemPrice">$123</span>
+          <span className="searchItemPrice"></span>
+        </div>
       </div>
     </div>
   );
