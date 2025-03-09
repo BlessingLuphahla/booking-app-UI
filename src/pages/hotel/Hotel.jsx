@@ -1,10 +1,48 @@
 import "./hotel.css";
 import { LocationOn } from "@mui/icons-material";
 import { photos } from "../../data/photos";
+import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 
 function Hotel() {
+  const [isOpenImage, setIsOpenImage] = useState(false);
+  const [modalImageIndex, setModalImageIndex] = useState(0);
+
+  const handleImageView = (i) => {
+    setModalImageIndex(i);
+    setIsOpenImage(!isOpenImage);
+  };
+
+  const changeModalIndex = (type) => {
+    if (type === "decrease") {
+      if (modalImageIndex === 0) return;
+      setModalImageIndex(modalImageIndex - 1);
+      return;
+    } else {
+      if (modalImageIndex === photos.length - 1) return;
+      setModalImageIndex(modalImageIndex + 1);
+      return;
+    }
+  };
+
   return (
     <div className="hotelContainer">
+      {isOpenImage && (
+        <div className="imageModal">
+          <div className="closeModal" onClick={() => setIsOpenImage(false)}>
+            ×
+          </div>
+          <ChevronLeft
+            className="symbol symbolLeft"
+            onClick={() => changeModalIndex("decrease")}
+          />
+          <img src={photos[modalImageIndex].src} alt="" />
+          <ChevronRight
+            className="symbol symbolRight"
+            onClick={() => changeModalIndex("increase")}
+          />
+        </div>
+      )}
       <div className="hotelWrapper">
         <h1 className="hotelTitle">Grand Hotel</h1>
         <div className="hotelAddresss">
@@ -20,7 +58,11 @@ function Hotel() {
         <button className="bookNow">Reserve or Book Now</button>
         <div className="hotelImages">
           {photos.map((photo, index) => (
-            <div key={index} className="hotelImgWrapper">
+            <div
+              onClick={() => handleImageView(index)}
+              key={index}
+              className="hotelImgWrapper"
+            >
               <img src={photo.src} alt="" className="hotelImg" />
             </div>
           ))}
