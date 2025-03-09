@@ -18,10 +18,12 @@ function Hotel() {
       if (modalImageIndex === 0) return;
       setModalImageIndex(modalImageIndex - 1);
       return;
-    } else {
+    } else if (type === "increase") {
       if (modalImageIndex === photos.length - 1) return;
       setModalImageIndex(modalImageIndex + 1);
       return;
+    } else {
+      console.log("invalid type");
     }
   };
 
