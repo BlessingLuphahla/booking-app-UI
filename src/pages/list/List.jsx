@@ -2,29 +2,35 @@ import { useEffect, useRef, useState } from "react";
 import "./list.css";
 import { useLocation } from "react-router-dom";
 import SearchItem from "../../components/searchItem/SearchItem";
+import { useAPI } from "../../hooks/useAPI";
+import Loading from "../../components/loading/Loading";
 
 function List() {
   const location = useLocation();
   const { state } = location;
 
+  const [data, setData] = useState(state);
+  const destination = data?.destination;
+  const options = data?.options;
+  const date = `${data?.startDate || "date"} to ${data?.endDate || "date"} `;
+
   const topSearchRef = useRef();
 
-  const [data, setData] = useState(state);
+  const { data: hotels, loading, error } = useAPI(`/hotels?city=madrid`, "GET");
 
   useEffect(() => {
     setData(state);
   }, [state]);
 
   const handleSearch = () => {
+
+    
+
     topSearchRef.current?.scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
   };
-
-  const destination = data?.destination;
-  const options = data?.options;
-  const date = `${data?.startDate || "date"} to ${data?.endDate || "date"} `;
 
   return (
     <div className="list">
@@ -94,20 +100,16 @@ function List() {
             <button onClick={handleSearch}>Search</button>
           </div>
           <div className="listResult" ref={topSearchRef}>
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
+            {error && <Error error={error} />}
+            {loading ? (
+              <Loading />
+            ) : (
+              !error &&
+              hotels.map((hotel, index) => {
+                index === 0 && console.log(hotel);
+                return <SearchItem key={hotel?._id || index} hotel={hotel} />;
+              })
+            )}
           </div>
         </div>
       </div>
