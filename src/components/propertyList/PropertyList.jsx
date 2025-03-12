@@ -1,5 +1,4 @@
 import "./propertyList.css";
-import { propertyList } from "../../data/propertyList";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { useScreen } from "../../hooks/useScreen";
@@ -13,7 +12,13 @@ function PropertyList() {
 
   const { data, loading, error } = useAPI("/hotels/countByType", "GET");
 
-  console.log(data);
+  console.log(data.length);
+
+  const propertyList = Array(5).fill(
+    "http://localhost:4567/my%20pics/2/Dope%20images/0095242d4eafd215ef250b0fbc96cb5a.jpg"
+  );
+
+  console.log(propertyList);
 
   useEffect(() => {
     if (upperLimit > propertyList.length) {
@@ -23,7 +28,7 @@ function PropertyList() {
     if (lowerLimit < 0) {
       setLowerLimit(0);
     }
-  }, [lowerLimit, upperLimit]);
+  }, [lowerLimit, propertyList.length, upperLimit]);
 
   const handlePrev = () => {
     if (lowerLimit > 0) {
@@ -45,19 +50,23 @@ function PropertyList() {
       {loading
         ? "Loading, Please wait..."
         : !error &&
-          propertyList
-            .slice(lowerLimit, upperLimit + 1)
-            .map((element, index) => {
-              return (
-                <div key={index} className="propertyListItem">
-                  <img className="propertyListImg" src={element.src} alt="" />
-                  <div className="propertyListTitles">
-                    <h1>{element.title1}</h1>
-                    <h2>{element.title2}</h2>
-                  </div>
+          propertyList.slice(lowerLimit, upperLimit + 1).map((src, index) => {
+            const originalIndex = lowerLimit + index;
+
+            return (
+              <div key={index} className="propertyListItem">
+                <img className="propertyListImg" src={src} alt="" />
+                <div className="propertyListTitles">
+                  <h1> {data[index]?.type} </h1>
+                  <h2>
+                    {data[index]?.count} {data[index]?.type} {originalIndex} ||
+                    
+                    {index}
+                  </h2>
                 </div>
-              );
-            })}
+              </div>
+            );
+          })}
       <ChevronRight className="symbol" onClick={handleNext} />
     </div>
   );
