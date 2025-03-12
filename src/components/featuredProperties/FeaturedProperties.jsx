@@ -1,14 +1,26 @@
 import "./featuredProperties.css";
-import { feauturedProperties } from "../../data/featuredProperties";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+import { useAPI } from "../../hooks/useAPI";
+import Loading from "../loading/Loading";
 
 function FeaturedProperties() {
+  const {
+    data: hotels,
+    loading,
+    error,
+  } = useAPI("/hotels?featured=true", "GET");
 
   const [lowerLimit, setLowerLimit] = useState(0);
   const [upperLimit, setUpperLimit] = useState(2);
+  const [feauturedProperties, setFeauturedProperties] = useState([]);
 
   useEffect(() => {
+    setFeauturedProperties(hotels);
+  }, [hotels]);
+
+  useEffect(() => {
+    if (feauturedProperties.length === 0) return;
     if (upperLimit > feauturedProperties.length) {
       setUpperLimit(feauturedProperties.length);
     }
@@ -16,7 +28,7 @@ function FeaturedProperties() {
     if (lowerLimit < 0) {
       setLowerLimit(0);
     }
-  }, [lowerLimit, upperLimit]);
+  }, [feauturedProperties.length, lowerLimit, upperLimit]);
 
   const handlePrev = () => {
     if (lowerLimit > 0) {
@@ -35,23 +47,32 @@ function FeaturedProperties() {
   return (
     <div className="fp">
       <ChevronLeft className="symbol" onClick={handlePrev} />
-      {feauturedProperties
-        .slice(lowerLimit, upperLimit + 1)
-        .map((element, index) => {
-          const randomRating = Math.floor(Math.random() * 10);
-
-          return (
-            <div key={index} className="fpItem">
-              <img className="fpImg" src={element.src} alt="" />
-              <span className="fpName">{element.name}</span>
-              <span className="fpCity">{element.city}</span>
-              <div className="fpRating">
-                <button>{randomRating}</button>
-                <span>{element.ratingType}</span>
+      {loading ? (
+        <Loading />
+      ) : (
+        !error &&
+        feauturedProperties
+          ?.slice(lowerLimit, upperLimit + 1)
+          .map((hotel, index) => {
+            return (
+              <div key={index} className="fpItem">
+                <img className="fpImg" src={hotel.photos[0]} alt="" />
+                <span className="fpName">{hotel.name}</span>
+                <span className="fpCity">{hotel.city}</span>
+                <span className="fpPrice" Starting from>
+                  {" "}
+                  ${hotel.cheapestPrice}
+                </span>
+                {hotel.rating && (
+                  <div className="fpRating">
+                    <button>{hotel.rating}</button>
+                    <span>{hotel.ratingType}</span>
+                  </div>
+                )}
               </div>
-            </div>
-          );
-        })}
+            );
+          })
+      )}
       <ChevronRight className="symbol" onClick={handleNext} />
     </div>
   );

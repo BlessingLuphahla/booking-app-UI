@@ -1,6 +1,7 @@
 import "./featured.css";
 import { useAPI } from "../../hooks/useAPI";
 import { feauturedList } from "../../data/featured";
+import Loading from "../loading/Loading";
 
 function Featured() {
   const { data, loading, error } = useAPI(
@@ -12,7 +13,7 @@ function Featured() {
     <div className="featured">
       {error && <div>{error}</div>}
       {loading
-        ? "Loading, Please wait..."
+        ? <Loading/>
         : !error &&
           feauturedList.map((element, index) => {
             return (

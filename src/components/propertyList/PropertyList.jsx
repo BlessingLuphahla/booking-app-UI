@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { useScreen } from "../../hooks/useScreen";
 import { useAPI } from "../../hooks/useAPI";
+import Loading from "../loading/Loading";
 
 function PropertyList() {
   const { isMobile } = useScreen();
@@ -11,14 +12,11 @@ function PropertyList() {
   const [upperLimit, setUpperLimit] = useState(isMobile ? 2 : 3);
 
   const { data, loading, error } = useAPI("/hotels/countByType", "GET");
-
-  console.log(data.length);
+ 
 
   const propertyList = Array(5).fill(
     "http://localhost:4567/my%20pics/2/Dope%20images/0095242d4eafd215ef250b0fbc96cb5a.jpg"
   );
-
-  console.log(propertyList);
 
   useEffect(() => {
     if (upperLimit > propertyList.length) {
@@ -48,7 +46,7 @@ function PropertyList() {
     <div className="propertyList">
       <ChevronLeft className="symbol" onClick={handlePrev} />
       {loading
-        ? "Loading, Please wait..."
+        ? <Loading/>
         : !error &&
           propertyList.slice(lowerLimit, upperLimit + 1).map((src, index) => {
             const originalIndex = lowerLimit + index;
@@ -57,11 +55,9 @@ function PropertyList() {
               <div key={index} className="propertyListItem">
                 <img className="propertyListImg" src={src} alt="" />
                 <div className="propertyListTitles">
-                  <h1> {data[index]?.type} </h1>
+                  <h1> {data[originalIndex]?.type} </h1>
                   <h2>
-                    {data[index]?.count} {data[index]?.type} {originalIndex} ||
-                    
-                    {index}
+                    {data[originalIndex]?.count} {data[originalIndex]?.type}
                   </h2>
                 </div>
               </div>
