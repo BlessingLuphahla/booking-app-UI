@@ -8,14 +8,13 @@ function Featured() {
     "GET"
   );
 
-  console.log(data);
-
   return (
     <div className="featured">
       {error && <div>{error}</div>}
-      {!error && loading
+      {loading
         ? "Loading, Please wait..."
-        : feauturedList.map((element, index) => {
+        : !error &&
+          feauturedList.map((element, index) => {
             return (
               <div key={index} className="featuredItem">
                 <img className="featuredImg" src={element.src} alt="" />
