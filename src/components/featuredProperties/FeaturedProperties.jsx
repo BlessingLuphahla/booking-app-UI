@@ -44,6 +44,20 @@ function FeaturedProperties() {
     }
   };
 
+  const ratingType = (rating) => {
+    if (rating === 1) {
+      return "Bad";
+    } else if (rating === 2) {
+      return "Better";
+    } else if (rating === 3) {
+      return "Medium";
+    } else if (rating === 4) {
+      return "Good";
+    } else if (rating === 5) {
+      return "Excellent";
+    }
+  };
+
   return (
     <div className="fp">
       <ChevronLeft className="symbol" onClick={handlePrev} />
@@ -59,14 +73,13 @@ function FeaturedProperties() {
                 <img className="fpImg" src={hotel.photos[0]} alt="" />
                 <span className="fpName">{hotel.name}</span>
                 <span className="fpCity">{hotel.city}</span>
-                <span className="fpPrice" Starting from>
-                  {" "}
-                  ${hotel.cheapestPrice}
+                <span className="fpPrice">
+                  Starting from ${hotel.cheapestPrice}
                 </span>
                 {hotel.rating && (
                   <div className="fpRating">
                     <button>{hotel.rating}</button>
-                    <span>{hotel.ratingType}</span>
+                    <span>{ratingType()}</span>
                   </div>
                 )}
               </div>
