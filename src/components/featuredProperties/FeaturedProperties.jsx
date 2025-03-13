@@ -55,6 +55,8 @@ function FeaturedProperties() {
       return "Good";
     } else if (rating === 5) {
       return "Excellent";
+    } else {
+      return "";
     }
   };
 

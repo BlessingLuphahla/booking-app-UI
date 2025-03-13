@@ -24,8 +24,6 @@ function List() {
 
   const handleSearch = () => {
 
-    
-
     topSearchRef.current?.scrollIntoView({
       behavior: "smooth",
       block: "start",
@@ -106,7 +104,6 @@ function List() {
             ) : (
               !error &&
               hotels.map((hotel, index) => {
-                index === 0 && console.log(hotel);
                 return <SearchItem key={hotel?._id || index} hotel={hotel} />;
               })
             )}
