@@ -44,7 +44,7 @@ function PropertyList() {
 
   return (
     <div className="propertyList">
-      <ChevronLeft className="symbol" onClick={handlePrev} />
+      <ChevronLeft className="symbol symbolLeft" onClick={handlePrev} />
       {loading
         ? <Loading/>
         : !error &&
@@ -63,7 +63,7 @@ function PropertyList() {
               </div>
             );
           })}
-      <ChevronRight className="symbol" onClick={handleNext} />
+      <ChevronRight className="symbol symbolRight" onClick={handleNext} />
     </div>
   );
 }

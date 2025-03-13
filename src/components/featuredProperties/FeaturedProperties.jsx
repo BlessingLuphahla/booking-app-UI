@@ -62,7 +62,7 @@ function FeaturedProperties() {
 
   return (
     <div className="fp">
-      <ChevronLeft className="symbol" onClick={handlePrev} />
+      <ChevronLeft className="symbol symbolLeft" onClick={handlePrev} />
       {loading ? (
         <Loading />
       ) : (
@@ -88,7 +88,7 @@ function FeaturedProperties() {
             );
           })
       )}
-      <ChevronRight className="symbol" onClick={handleNext} />
+      <ChevronRight className="symbol symbolRight" onClick={handleNext} />
     </div>
   );
 }

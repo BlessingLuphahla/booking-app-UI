@@ -87,6 +87,15 @@
     padding: 1px;
   }
 
+  .symbolLeft {
+    left: 5px;
+  }
+
+  .symbolRight {
+    right: 5px;
+  }
+
+
   .fpName {
     font-size: 13px;
   }
