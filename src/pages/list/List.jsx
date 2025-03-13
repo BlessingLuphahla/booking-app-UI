@@ -10,19 +10,32 @@ function List() {
   const { state } = location;
 
   const [data, setData] = useState(state);
-  const destination = data?.destination;
-  const options = data?.options;
+  const [destination, setDestination] = useState(data?.destination);
+  const [options, setOptions] = useState(data?.options);
+
   const date = `${data?.startDate || "date"} to ${data?.endDate || "date"} `;
 
   const topSearchRef = useRef();
 
-  const { data: hotels, loading, error } = useAPI(`/hotels?city=madrid`, "GET");
+  const {
+    data: hotels,
+    loading,
+    error,
+  } = useAPI(`/hotels?city=${destination}`, "GET");
 
   useEffect(() => {
     setData(state);
   }, [state]);
 
+  console.log(options);
+
   const handleSearch = () => {
+    setData({
+      destination: destination || "",
+      options: options,
+      startDate: data?.startDate,
+      endDate: data?.endDate,
+    });
 
     topSearchRef.current?.scrollIntoView({
       behavior: "smooth",
@@ -38,7 +51,11 @@ function List() {
             <h1 className="listSearchTitle">Search</h1>
             <div className="listSearchItem">
               <label htmlFor="">Destination:</label>
-              <input type="text" placeholder={destination} />
+              <input
+                type="text"
+                placeholder={destination}
+                onChange={(e) => setDestination(e.target.value)}
+              />
             </div>
             <div className="listSearchItem">
               <label htmlFor="">Check In Date:</label>
@@ -73,6 +90,9 @@ function List() {
                   type="number"
                   className="listSearchItemOptionInput"
                   min={1}
+                  onChange={(e) =>
+                    setOptions((prev) => ({ ...prev, adults: e.target.value }))
+                  }
                 />
               </div>
 
@@ -83,6 +103,9 @@ function List() {
                   type="number"
                   className="listSearchItemOptionInput"
                   min={1}
+                  onChange={(e) =>
+                    setOptions((prev) => ({ ...prev, room: e.target.value }))
+                  }
                 />
               </div>
               <div className="listSearchItemOption">
@@ -92,6 +115,12 @@ function List() {
                   type="number"
                   className="listSearchItemOptionInput"
                   min={0}
+                  onChange={(e) =>
+                    setOptions((prev) => ({
+                      ...prev,
+                      children: e.target.value,
+                    }))
+                  }
                 />
               </div>
             </div>
