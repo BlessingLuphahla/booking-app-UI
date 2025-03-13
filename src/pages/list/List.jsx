@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import SearchItem from "../../components/searchItem/SearchItem";
 import { useAPI } from "../../hooks/useAPI";
 import Loading from "../../components/loading/Loading";
+import DateRangePicker from "../../components/dateRangePicker/DateRangePicker";
 
 function List() {
   const location = useLocation();
@@ -13,7 +14,12 @@ function List() {
   const [destination, setDestination] = useState(data?.destination);
   const [options, setOptions] = useState(data?.options);
 
-  const date = `${data?.startDate || "date"} to ${data?.endDate || "date"} `;
+  const [startDate, setStartDate] = useState(data?.startDate);
+  const [endDate, setEndDate] = useState(data?.endDate);
+
+  const [isOpenDate, setIsOpenDate] = useState(false);
+
+  const date = `${startDate || "date"} to ${endDate || "date"} `;
 
   const topSearchRef = useRef();
 
@@ -33,8 +39,8 @@ function List() {
     setData({
       destination: destination || "",
       options: options,
-      startDate: data?.startDate,
-      endDate: data?.endDate,
+      startDate: startDate,
+      endDate: endDate,
     });
 
     topSearchRef.current?.scrollIntoView({
@@ -59,7 +65,21 @@ function List() {
             </div>
             <div className="listSearchItem">
               <label htmlFor="">Check In Date:</label>
-              <span className="listSearchItemDate">{date}</span>
+              <span
+                onClick={() => setIsOpenDate(!isOpenDate)}
+                className="listSearchItemDate"
+              >
+                {date}
+              </span>
+              {isOpenDate && (
+                <DateRangePicker
+                  setEndDate={setEndDate}
+                  setStartDate={setStartDate}
+                  startDate={startDate}
+                  endDate={endDate}
+                  setIsOpenDate={setIsOpenDate}
+                />
+              )}
             </div>
             <label htmlFor="">Options:</label>
             <div className="listSearchItem">
