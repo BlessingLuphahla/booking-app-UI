@@ -13,11 +13,11 @@ function List() {
   const [data, setData] = useState(state);
   const [destination, setDestination] = useState(data?.destination);
   const [options, setOptions] = useState(data?.options);
-
   const [startDate, setStartDate] = useState(data?.startDate);
   const [endDate, setEndDate] = useState(data?.endDate);
-
   const [isOpenDate, setIsOpenDate] = useState(false);
+  const [minPrice, setMinPrice] = useState(undefined);
+  const [maxPrice, setMaxPrice] = useState(undefined);
 
   const date = `${startDate || "date"} to ${endDate || "date"} `;
 
@@ -26,14 +26,16 @@ function List() {
   const {
     data: hotels,
     loading,
+    reFetchData,
     error,
-  } = useAPI(`/hotels?city=${destination}`, "GET");
+  } = useAPI(
+    `/hotels?city=${destination}&max=${maxPrice || 999}&min=${minPrice || 0}`,
+    "GET"
+  );
 
   useEffect(() => {
     setData(state);
   }, [state]);
-
-  console.log(options);
 
   const handleSearch = () => {
     setData({
@@ -43,6 +45,7 @@ function List() {
       endDate: endDate,
     });
 
+    reFetchData();
     topSearchRef.current?.scrollIntoView({
       behavior: "smooth",
       block: "start",
@@ -91,6 +94,7 @@ function List() {
                   type="number"
                   className="listSearchItemOptionInput"
                   min={0}
+                  onChange={(e) => setMinPrice(e.target.value)}
                 />
               </div>
               <div className="listSearchItemOption">
@@ -101,6 +105,7 @@ function List() {
                   type="number"
                   className="listSearchItemOptionInput"
                   min={0}
+                  onChange={(e) => setMaxPrice(e.target.value)}
                 />
               </div>
               <div className="listSearchItemOption">
@@ -150,8 +155,13 @@ function List() {
             {error && <Error error={error} />}
             {loading ? (
               <Loading />
+            ) : !error && hotels.length <= 0 ? (
+              <div className="listNoResultContainer">
+                <div className="listNoResult">
+                  <h3>Sorry no results found for the given details</h3>
+                </div>
+              </div>
             ) : (
-              !error &&
               hotels.map((hotel, index) => {
                 return <SearchItem key={hotel?._id || index} hotel={hotel} />;
               })

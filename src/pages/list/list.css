@@ -110,6 +110,27 @@
   cursor: pointer;
 }
 
+.listNoResultContainer {
+  height: 70%;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.listNoResult {
+  color: gray;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.listNoResult h3 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
 @media (max-width: 599px) {
   .listWrapper {
     max-width: 95%;
@@ -162,5 +183,10 @@
   .listSearch > button {
     padding: 10px;
     font-size: 16px;
+  }
+
+  .listNoResult h3 {
+    font-size: 18px;
+    margin: 10px 0px;
   }
 }
