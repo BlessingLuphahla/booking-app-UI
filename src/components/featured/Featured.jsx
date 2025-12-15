@@ -1,6 +1,6 @@
 import "./featured.css";
 import { useAPI } from "../../hooks/useAPI";
-import { feauturedList } from "../../data/featured";
+// import { feauturedList } from "../../data/featured";
 import Loading from "../loading/Loading";
 import Error from "../error/Error";
 
